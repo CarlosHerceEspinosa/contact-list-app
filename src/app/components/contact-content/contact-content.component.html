@@ -1,0 +1,14 @@
+<div class="py-5 text-center">
+    <h2 class="mb-4 text-uppercase">Contact App</h2>
+    <button class="btn btn-success btn-lg" (click)="newContact()">
+      <i class="fas fa-user-plus"></i> Add new contact
+    </button>
+  </div>
+<div id="contact-content" class="row" [ngClass]="{'editing': contactSelected != undefined && contactSelected.id != -1}">
+    <div class="col" [hidden]="contactSelected != undefined && contactSelected.id == -1">
+        <app-contact-list [list]="contactList" (selectContact)="showContact($event)" (deleteContact)="deleteContact($event)"></app-contact-list>
+    </div>
+    <div class="col" [hidden]="contactSelected == undefined">
+        <app-contact-form [selected]="contactSelected" (selectContact)="showContact($event)"></app-contact-form>
+    </div>
+</div>
