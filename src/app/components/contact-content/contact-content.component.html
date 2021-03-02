@@ -8,8 +8,8 @@
     <div class="col" *ngIf="contactSelected == undefined || contactSelected.id != -1">
         <app-contact-list [list]="contactList" (selectContact)="showContact($event)" (deleteContact)="deleteContact($event)"></app-contact-list>
     </div>
-    <div class="col" *ngIf="contactSelected != undefined">
-        <app-contact-form [@slideInOut] [selected]="contactSelected" (selectContact)="showContact($event)">
+    <div class="col" *ngIf="contactSelected != undefined" [@slideInOut]>
+        <app-contact-form [selected]="contactSelected" (selectContact)="showContact($event)">
         </app-contact-form>
     </div>
 </div>
