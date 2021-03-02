@@ -2,11 +2,23 @@ import { ContactService } from './../../services/contact.service';
 import { Contact } from '../../models/contact';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from "rxjs";
+import { trigger, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-contact-content',
   templateUrl: './contact-content.component.html',
-  styleUrls: ['./contact-content.component.css']
+  styleUrls: ['./contact-content.component.css'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateY(-100%)' }),
+        animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ transform: 'translateY(-100%)' }))
+      ])
+    ])
+  ]
 })
 export class ContactContentComponent implements OnInit {
 
